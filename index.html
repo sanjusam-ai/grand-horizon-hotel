@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grand Horizon Hotel | Luxury Stays & Fine Dining</title>
+  <!-- Tailwind CSS v4 Play CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <!-- Google Fonts for Luxury Serif Headings + Clean Sans Body -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style type="text/tailwindcss">
+    @theme {
+      --color-navy: #0F2942;
+      --color-navy-dark: #091B2C;
+      --color-rose-brand: #E11D48;
+      --color-rose-hover: #BE123C;
+      --font-serif: "Playfair Display", Georgia, serif;
+      --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+    }
+  </style>
+</head>
+<body class="font-sans text-slate-800 bg-slate-50 antialiased">
+
+  <!-- 1. SHARED TOP NAVBAR -->
+  <header class="bg-navy text-white sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <a href="index.html" class="font-serif text-2xl font-bold tracking-wide text-white">
+        Grand <span class="text-amber-400">Horizon</span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="index.html" class="text-amber-400 border-b-2 border-amber-400 pb-1">Home</a>
+        <a href="rooms.html" class="text-slate-200 hover:text-amber-400 transition">Rooms</a>
+        <a href="dining.html" class="text-slate-200 hover:text-amber-400 transition">Dining</a>
+        <a href="about.html" class="text-slate-200 hover:text-amber-400 transition">About Us</a>
+        <a href="contact.html" class="text-slate-200 hover:text-amber-400 transition">Contact</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="hidden md:flex items-center gap-4">
+        <a href="admin/dashboard.html" class="text-xs text-slate-300 hover:text-white underline">Admin Panel</a>
+        <button onclick="openBookingModal()" class="bg-rose-brand hover:bg-rose-hover text-white text-sm font-semibold px-5 py-2.5 rounded-lg shadow transition cursor-pointer">
+          Book Now
+        </button>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-navy-dark px-6 pb-4 space-y-3 text-sm">
+      <a href="index.html" class="block text-amber-400 font-semibold">Home</a>
+      <a href="rooms.html" class="block text-slate-200">Rooms</a>
+      <a href="dining.html" class="block text-slate-200">Dining</a>
+      <a href="about.html" class="block text-slate-200">About Us</a>
+      <a href="contact.html" class="block text-slate-200">Contact</a>
+      <a href="admin/dashboard.html" class="block text-slate-400 text-xs pt-2">Admin Panel</a>
+      <button onclick="openBookingModal()" class="w-full bg-rose-brand text-white font-semibold py-2 rounded-lg mt-2">
+        Book Now
+      </button>
+    </div>
+  </header>
+
+  <!-- 2. HERO BANNER (Matches Top Twilight Pool & Hotel Image in Wireframe) -->
+  <section class="relative h-[540px] flex items-center justify-center text-center text-white">
+    <img 
+      src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=80" 
+      alt="Grand Horizon Hotel Twilight Pool" 
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <!-- Dark Gradient Overlay for Readable Text -->
+    <div class="absolute inset-0 bg-gradient-to-b from-navy/70 via-navy/50 to-navy/80"></div>
+
+    <div class="relative z-10 max-w-3xl px-6">
+      <p class="uppercase tracking-[0.25em] text-amber-300 text-xs md:text-sm font-semibold mb-3">
+        Welcome to Luxury & Serenity
+      </p>
+      <h1 class="font-serif text-4xl md:text-6xl font-bold leading-tight mb-4">
+        GRAND HORIZON HOTEL
+      </h1>
+      <p class="text-slate-200 text-base md:text-lg mb-8 max-w-xl mx-auto">
+        Experience breathtaking oceanfront views, world-class hospitality, and unforgettable fine dining crafted for your comfort.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <button onclick="openBookingModal()" class="bg-rose-brand hover:bg-rose-hover text-white font-semibold px-7 py-3 rounded-lg shadow-lg transition cursor-pointer">
+          Reserve Your Stay
+        </button>
+        <a href="rooms.html" class="bg-white/15 hover:bg-white/25 backdrop-blur-sm border border-white/40 text-white font-semibold px-7 py-3 rounded-lg transition">
+          Explore Rooms
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. OUR ROOMS SECTION (3-Column Grid from Wireframe) -->
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <div class="text-center mb-12">
+      <h2 class="font-serif text-3xl md:text-4xl font-bold text-navy">Our Rooms</h2>
+      <p class="text-slate-500 mt-2">Thoughtfully designed suites for relaxation and elegance</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Room Card 1 -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 hover:shadow-xl transition">
+        <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=800&q=80" alt="Deluxe King Room" class="w-full h-52 object-cover">
+        <div class="p-6">
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="font-serif text-xl font-bold text-navy">Deluxe King Room</h3>
+            <span class="text-rose-brand font-bold text-lg">$180<span class="text-xs text-slate-400 font-normal">/night</span></span>
+          </div>
+          <p class="text-slate-600 text-sm mb-5">Spacious king bed, private balcony, high-speed Wi-Fi, and city skyline views.</p>
+          <a href="rooms.html" class="block text-center bg-navy hover:bg-navy-dark text-white text-sm font-semibold py-2.5 rounded-lg transition">
+            View Details
+          </a>
+        </div>
+      </div>
+
+      <!-- Room Card 2 -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 hover:shadow-xl transition">
+        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Executive Ocean Suite" class="w-full h-52 object-cover">
+        <div class="p-6">
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="font-serif text-xl font-bold text-navy">Executive Ocean Suite</h3>
+            <span class="text-rose-brand font-bold text-lg">$290<span class="text-xs text-slate-400 font-normal">/night</span></span>
+          </div>
+          <p class="text-slate-600 text-sm mb-5">Panoramic ocean views, separate lounge area, rainfall shower, and complimentary breakfast.</p>
+          <a href="rooms.html" class="block text-center bg-navy hover:bg-navy-dark text-white text-sm font-semibold py-2.5 rounded-lg transition">
+            View Details
+          </a>
+        </div>
+      </div>
+
+      <!-- Room Card 3 -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 hover:shadow-xl transition">
+        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=800&q=80" alt="Royal Presidential Suite" class="w-full h-52 object-cover">
+        <div class="p-6">
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="font-serif text-xl font-bold text-navy">Presidential Suite</h3>
+            <span class="text-rose-brand font-bold text-lg">$450<span class="text-xs text-slate-400 font-normal">/night</span></span>
+          </div>
+          <p class="text-slate-600 text-sm mb-5">Two bedrooms, private terrace jacuzzi, 24/7 butler service, and VIP airport transfer.</p>
+          <a href="rooms.html" class="block text-center bg-navy hover:bg-navy-dark text-white text-sm font-semibold py-2.5 rounded-lg transition">
+            View Details
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. DINING EXPERIENCE HIGHLIGHT (Matches Middle Section of Wireframe) -->
+  <section class="bg-sky-50 py-16">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <img 
+        src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80" 
+        alt="Grand Horizon Fine Dining" 
+        class="rounded-2xl shadow-lg w-full h-80 object-cover"
+      />
+      <div>
+        <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full">
+          Culinary Excellence
+        </span>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-navy mt-3 mb-4">
+          Fine Dining & Rooftop Lounge
+        </h2>
+        <p class="text-slate-600 leading-relaxed mb-6">
+          Savor international flavors and coastal specialties prepared by our award-winning chefs. Whether it's a sunrise breakfast or a candlelit dinner overlooking the horizon, every dish is an experience.
+        </p>
+        <a href="dining.html" class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-lg shadow transition">
+          Explore Dining Menu
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. GUEST REVIEWS & QUICK INQUIRY (Bottom Half of Home Wireframe) -->
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <div class="text-center mb-12">
+      <h2 class="font-serif text-3xl font-bold text-navy">What Our Guests Say</h2>
+      <p class="text-slate-500 mt-2">Rated 4.9/5 by travelers from around the world</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+      <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+        <div class="text-amber-400 text-lg mb-2">★★★★★</div>
+        <p class="text-slate-600 text-sm italic mb-4">"The sunset view from the infinity pool and our ocean suite was unreal. Staff went above and beyond!"</p>
+        <p class="font-bold text-navy text-sm">— Aarav Sharma</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+        <div class="text-amber-400 text-lg mb-2">★★★★★</div>
+        <p class="text-slate-600 text-sm italic mb-4">"Immaculate rooms, fast check-in, and the rooftop restaurant served the best seafood platter we've ever had."</p>
+        <p class="font-bold text-navy text-sm">— Elena Rostova</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+        <div class="text-amber-400 text-lg mb-2">★★★★★</div>
+        <p class="text-slate-600 text-sm italic mb-4">"Perfect weekend getaway. Quiet, luxurious, and super close to the beach promenade."</p>
+        <p class="font-bold text-navy text-sm">— Rohan Kulkarni</p>
+      </div>
+    </div>
+
+    <!-- Quick Contact Strip -->
+    <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-8 max-w-3xl mx-auto">
+      <h3 class="font-serif text-2xl font-bold text-navy text-center mb-2">Have a Question Before Booking?</h3>
+      <p class="text-slate-500 text-sm text-center mb-6">Send us a quick message and our concierge will reply within minutes.</p>
+      <form onsubmit="handleQuickInquiry(event)" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input type="text" required placeholder="Your Name" class="border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-navy">
+        <input type="email" required placeholder="Your Email" class="border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-navy">
+        <textarea rows="3" required placeholder="How can we help you?" class="md:col-span-2 border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-navy"></textarea>
+        <div class="md:col-span-2 text-center">
+          <button type="submit" class="bg-rose-brand hover:bg-rose-hover text-white font-semibold px-8 py-2.5 rounded-lg shadow transition cursor-pointer">
+            Send Inquiry
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- 6. SHARED DARK NAVY FOOTER -->
+  <footer class="bg-navy text-slate-300 pt-12 pb-8">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 border-b border-slate-700 pb-8">
+      <div>
+        <h4 class="font-serif text-xl font-bold text-white mb-3">Grand <span class="text-amber-400">Horizon</span></h4>
+        <p class="text-sm text-slate-400 leading-relaxed">
+          Luxury coastal resort offering refined suites, panoramic dining, and personalized hospitality.
+        </p>
+      </div>
+      <div>
+        <h4 class="font-semibold text-white mb-3">Quick Links</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="rooms.html" class="hover:text-amber-400 transition">Rooms & Suites</a></li>
+          <li><a href="dining.html" class="hover:text-amber-400 transition">Fine Dining</a></li>
+          <li><a href="about.html" class="hover:text-amber-400 transition">About Us</a></li>
+          <li><a href="contact.html" class="hover:text-amber-400 transition">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-white mb-3">Contact Info</h4>
+        <p class="text-sm text-slate-400">120 Oceanfront Boulevard, Marine Drive</p>
+        <p class="text-sm text-slate-400 mt-1">Phone: +91 98765 43210</p>
+        <p class="text-sm text-slate-400 mt-1">Email: reservations@grandhorizon.com</p>
+      </div>
+    </div>
+    <p class="text-center text-xs text-slate-500 mt-6">© 2026 Grand Horizon Hotel. All rights reserved.</p>
+  </footer>
+
+  <!-- INTERACTIVE BOOKING MODAL -->
+  <div id="booking-modal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative">
+      <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-xl font-bold cursor-pointer">&times;</button>
+      <h3 class="font-serif text-2xl font-bold text-navy mb-1">Reserve Your Room</h3>
+      <p class="text-xs text-slate-500 mb-5">Instant confirmation • Best rate guaranteed</p>
+      <form onsubmit="submitBooking(event)" class="space-y-4 text-sm">
+        <div>
+          <label class="block font-medium text-slate-700 mb-1">Guest Full Name</label>
+          <input type="text" required placeholder="Sanju" class="w-full border border-slate-300 rounded-lg px-3 py-2">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-medium text-slate-700 mb-1">Check-In</label>
+            <input type="date" required class="w-full border border-slate-300 rounded-lg px-3 py-2">
+          </div>
+          <div>
+            <label class="block font-medium text-slate-700 mb-1">Check-Out</label>
+            <input type="date" required class="w-full border border-slate-300 rounded-lg px-3 py-2">
+          </div>
+        </div>
+        <div>
+          <label class="block font-medium text-slate-700 mb-1">Room Type</label>
+          <select id="modal-room-select" class="w-full border border-slate-300 rounded-lg px-3 py-2">
+            <option>Deluxe King Room ($180/night)</option>
+            <option>Executive Ocean Suite ($290/night)</option>
+            <option>Presidential Suite ($450/night)</option>
+          </select>
+        </div>
+        <button type="submit" class="w-full bg-rose-brand hover:bg-rose-hover text-white font-semibold py-2.5 rounded-lg shadow transition cursor-pointer">
+          Confirm Reservation
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

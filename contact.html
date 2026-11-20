@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Grand Horizon Hotel</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style type="text/tailwindcss">
+    @theme {
+      --color-navy: #0F2942;
+      --color-navy-dark: #091B2C;
+      --color-rose-brand: #E11D48;
+      --color-rose-hover: #BE123C;
+      --font-serif: "Playfair Display", Georgia, serif;
+      --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+    }
+  </style>
+</head>
+<body class="font-sans text-slate-800 bg-slate-50 antialiased">
+
+  <!-- SHARED TOP NAVBAR -->
+  <header class="bg-navy text-white sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="font-serif text-2xl font-bold tracking-wide text-white">
+        Grand <span class="text-amber-400">Horizon</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="index.html" class="text-slate-200 hover:text-amber-400 transition">Home</a>
+        <a href="rooms.html" class="text-slate-200 hover:text-amber-400 transition">Rooms</a>
+        <a href="dining.html" class="text-slate-200 hover:text-amber-400 transition">Dining</a>
+        <a href="about.html" class="text-slate-200 hover:text-amber-400 transition">About Us</a>
+        <a href="contact.html" class="text-amber-400 border-b-2 border-amber-400 pb-1">Contact</a>
+      </nav>
+
+      <div class="hidden md:flex items-center gap-4">
+        <a href="admin/dashboard.html" class="text-xs text-slate-300 hover:text-white underline">Admin Panel</a>
+        <button onclick="openBookingModal()" class="bg-rose-brand hover:bg-rose-hover text-white text-sm font-semibold px-5 py-2.5 rounded-lg shadow transition cursor-pointer">
+          Book Now
+        </button>
+      </div>
+
+      <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-navy-dark px-6 pb-4 space-y-3 text-sm">
+      <a href="index.html" class="block text-slate-200">Home</a>
+      <a href="rooms.html" class="block text-slate-200">Rooms</a>
+      <a href="dining.html" class="block text-slate-200">Dining</a>
+      <a href="about.html" class="block text-slate-200">About Us</a>
+      <a href="contact.html" class="block text-amber-400 font-semibold">Contact</a>
+      <a href="admin/dashboard.html" class="block text-slate-400 text-xs pt-2">Admin Panel</a>
+      <button onclick="openBookingModal()" class="w-full bg-rose-brand text-white font-semibold py-2 rounded-lg mt-2">
+        Book Now
+      </button>
+    </div>
+  </header>
+
+  <!-- 1. SOFT BLUSH CONTACT BANNER (Matches 5th Wireframe Screen) -->
+  <section class="bg-rose-50 border-b border-rose-100 py-14 text-center">
+    <div class="max-w-3xl mx-auto px-6">
+      <h1 class="font-serif text-4xl md:text-5xl font-bold text-navy">CONTACT US</h1>
+      <p class="text-slate-600 mt-3 text-sm md:text-base">
+        We're here 24/7 to assist with reservations, private events, and custom stay requests.
+      </p>
+    </div>
+  </section>
+
+  <!-- 2. TWO-COLUMN INFO CARD + CONTACT FORM -->
+  <main class="max-w-5xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-5 gap-8 items-start">
+
+    <!-- Left Card: Direct Hotel Contact Info -->
+    <div class="md:col-span-2 bg-white p-7 rounded-2xl shadow-sm border border-slate-200 space-y-6">
+      <div>
+        <h2 class="font-serif text-xl font-bold text-navy mb-2">Get in Touch</h2>
+        <p class="text-xs text-slate-500">Reach our front desk directly by phone, email, or visit us on the promenade.</p>
+      </div>
+
+      <div class="space-y-4 text-sm">
+        <div>
+          <p class="font-bold text-navy">Hotel Address</p>
+          <p class="text-slate-600 mt-0.5">120 Oceanfront Boulevard, Marine Drive, Coastal Bay</p>
+        </div>
+        <div>
+          <p class="font-bold text-navy">Phone & WhatsApp</p>
+          <p class="text-slate-600 mt-0.5">+91 98765 43210</p>
+        </div>
+        <div>
+          <p class="font-bold text-navy">Reservations Email</p>
+          <p class="text-slate-600 mt-0.5">reservations@grandhorizon.com</p>
+        </div>
+        <div>
+          <p class="font-bold text-navy">Check-In / Check-Out</p>
+          <p class="text-slate-600 mt-0.5">Check-in: 2:00 PM • Check-out: 11:00 AM</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Card: Send Us a Message Form -->
+    <div class="md:col-span-3 bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+      <h2 class="font-serif text-2xl font-bold text-navy mb-1">Send Us a Message</h2>
+      <p class="text-xs text-slate-500 mb-6">Fill out the form below and our concierge team will get back to you promptly.</p>
+
+      <form onsubmit="handleQuickInquiry(event)" class="space-y-4 text-sm">
+        <div>
+          <label class="block font-medium text-slate-700 mb-1">Full Name</label>
+          <input type="text" required placeholder="Enter your name" class="w-full border border-slate-300 rounded-lg px-4 py-2.5 focus:outline-none focus:border-navy">
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-medium text-slate-700 mb-1">Email Address</label>
+            <input type="email" required placeholder="you@example.com" class="w-full border border-slate-300 rounded-lg px-4 py-2.5 focus:outline-none focus:border-navy">
+          </div>
+          <div>
+            <label class="block font-medium text-slate-700 mb-1">Phone Number</label>
+            <input type="tel" placeholder="+91 98765 43210" class="w-full border border-slate-300 rounded-lg px-4 py-2.5 focus:outline-none focus:border-navy">
+          </div>
+        </div>
+        <div>
+          <label class="block font-medium text-slate-700 mb-1">Subject</label>
+          <select class="w-full border border-slate-300 rounded-lg px-4 py-2.5 focus:outline-none focus:border-navy">
+            <option>Room Reservation Inquiry</option>
+            <option>Restaurant & Private Dining</option>
+            <option>Airport Transfer & Concierge</option>
+            <option>General Feedback</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-medium text-slate-700 mb-1">Message</label>
+          <textarea rows="4" required placeholder="Write your message here..." class="w-full border border-slate-300 rounded-lg px-4 py-2.5 focus:outline-none focus:border-navy"></textarea>
+        </div>
+        <button type="submit" class="bg-rose-brand hover:bg-rose-hover text-white font-semibold px-7 py-3 rounded-lg shadow transition cursor-pointer">
+          Send Message
+        </button>
+      </form>
+    </div>
+
+  </main>
+
+  <!-- SHARED DARK NAVY FOOTER -->
+  <footer class="bg-navy text-slate-300 pt-12 pb-8">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 border-b border-slate-700 pb-8">
+      <div>
+        <h4 class="font-serif text-xl font-bold text-white mb-3">Grand <span class="text-amber-400">Horizon</span></h4>
+        <p class="text-sm text-slate-400 leading-relaxed">
+          Luxury coastal resort offering refined suites, panoramic dining, and personalized hospitality.
+        </p>
+      </div>
+      <div>
+        <h4 class="font-semibold text-white mb-3">Quick Links</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="rooms.html" class="hover:text-amber-400 transition">Rooms & Suites</a></li>
+          <li><a href="dining.html" class="hover:text-amber-400 transition">Fine Dining</a></li>
+          <li><a href="about.html" class="hover:text-amber-400 transition">About Us</a></li>
+          <li><a href="contact.html" class="hover:text-amber-400 transition">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-white mb-3">Contact Info</h4>
+        <p class="text-sm text-slate-400">120 Oceanfront Boulevard, Marine Drive</p>
+        <p class="text-sm text-slate-400 mt-1">Phone: +91 98765 43210</p>
+        <p class="text-sm text-slate-400 mt-1">Email: reservations@grandhorizon.com</p>
+      </div>
+    </div>
+    <p class="text-center text-xs text-slate-500 mt-6">© 2026 Grand Horizon Hotel. All rights reserved.</p>
+  </footer>
+
+  <!-- ROOM BOOKING MODAL -->
+  <div id="booking-modal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative">
+      <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-xl font-bold cursor-pointer">&times;</button>
+      <h3 class="font-serif text-2xl font-bold text-navy mb-1">Reserve Your Room</h3>
+      <p class="text-xs text-slate-500 mb-5">Instant confirmation • Best rate guaranteed</p>
+      <form onsubmit="submitBooking(event)" class="space-y-4 text-sm">
+        <div>
+          <label class="block font-medium text-slate-700 mb-1">Guest Full Name</label>
+          <input type="text" required placeholder="Sanju" class="w-full border border-slate-300 rounded-lg px-3 py-2">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-medium text-slate-700 mb-1">Check-In</label>
+            <input type="date" required class="w-full border border-slate-300 rounded-lg px-3 py-2">
+          </div>
+          <div>
+            <label class="block font-medium text-slate-700 mb-1">Check-Out</label>
+            <input type="date" required class="w-full border border-slate-300 rounded-lg px-3 py-2">
+          </div>
+        </div>
+        <div>
+          <label class="block font-medium text-slate-700 mb-1">Room Type</label>
+          <select id="modal-room-select" class="w-full border border-slate-300 rounded-lg px-3 py-2">
+            <option>Deluxe King Room ($180/night)</option>
+            <option>Executive Ocean Suite ($290/night)</option>
+            <option>Presidential Suite ($450/night)</option>
+          </select>
+        </div>
+        <button type="submit" class="w-full bg-rose-brand hover:bg-rose-hover text-white font-semibold py-2.5 rounded-lg shadow transition cursor-pointer">
+          Confirm Reservation
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
